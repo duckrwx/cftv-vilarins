@@ -8,6 +8,12 @@ Pagina publicada via GitHub Pages em:
 https://cftv.vilarins.cloud
 ```
 
+Secao do problema:
+
+```text
+https://cftv.vilarins.cloud/#problema
+```
+
 Slides para gravacao do video:
 
 ```text
@@ -18,6 +24,12 @@ Prints de prova:
 
 ```text
 https://cftv.vilarins.cloud/provas.html
+```
+
+Video de apresentacao:
+
+```text
+https://youtu.be/PR9o8jA2Crk
 ```
 
 Repositorio da disciplina:
