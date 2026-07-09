@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Provas - CFTV + Bitcoin</title>
+    <style>
+      body {
+        background: #f6f8f9;
+        color: #172126;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        margin: 0;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 2rem 1rem 4rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        line-height: 1.08;
+        margin: 0 0 0.6rem;
+      }
+
+      p {
+        color: #60717a;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin: 0 0 1.4rem;
+        max-width: 780px;
+      }
+
+      figure {
+        background: #ffffff;
+        border: 1px solid #dce4e8;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        padding: 1rem;
+      }
+
+      img {
+        border-radius: 6px;
+        display: block;
+        width: 100%;
+      }
+
+      figcaption {
+        color: #34464f;
+        font-weight: 700;
+        margin-top: 0.75rem;
+      }
+
+      a {
+        color: #2454a6;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Provas do timestamp em Bitcoin</h1>
+      <p>
+        Evidências geradas a partir do pacote <code>camera-001-20260615T210000Z</code>,
+        usando OpenTimestamps para o manifesto assinado do pacote de custódia.
+      </p>
+      <p><a href="index.html">Voltar ao artigo</a> · <a href="slides.html">Abrir slides</a></p>
+
+      <figure>
+        <img src="proofs/01-ots-upgrade-success.png" alt="OpenTimestamps upgrade completo">
+        <figcaption>OpenTimestamps upgrade: prova .ots completa.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="proofs/02-ots-bitcoin-attestations.png" alt="Atestações OpenTimestamps em blocos Bitcoin">
+        <figcaption>Atestações em blocos Bitcoin e txids extraídos de <code>ots info</code>.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="proofs/03-blockstream-confirmations.png" alt="Confirmações dos txids no Blockstream API">
+        <figcaption>Confirmação pública dos txids via Blockstream API.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="proofs/04-package-integrity.png" alt="Relatório de integridade do pacote">
+        <figcaption>Relatório local de integridade do pacote de custódia.</figcaption>
+      </figure>
+    </main>
+  </body>
+</html>

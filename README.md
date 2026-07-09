@@ -14,6 +14,12 @@ Slides para gravacao do video:
 https://cftv.vilarins.cloud/slides.html
 ```
 
+Prints de prova:
+
+```text
+https://cftv.vilarins.cloud/provas.html
+```
+
 Repositorio da disciplina:
 
 ```text
