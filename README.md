@@ -8,6 +8,12 @@ Pagina publicada via GitHub Pages em:
 https://cftv.vilarins.cloud
 ```
 
+Slides para gravacao do video:
+
+```text
+https://cftv.vilarins.cloud/slides.html
+```
+
 Repositorio da disciplina:
 
 ```text
