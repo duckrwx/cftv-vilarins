@@ -232,12 +232,12 @@
     <main class="deck" aria-live="polite">
       <section class="slide title-slide active">
         <div>
-          <p class="kicker">UnB 2026.1 · Topicos em Engenharia</p>
+          <p class="kicker">UnB 2026.1 · Tópicos em Engenharia</p>
           <h1>CFTV + Bitcoin</h1>
-          <p>Cadeia de custodia verificavel para videos CFTV usando OpenTimestamps e Bitcoin.</p>
+          <p>Cadeia de custódia verificável para vídeos CFTV usando OpenTimestamps e Bitcoin.</p>
         </div>
         <div class="panel diagram">
-          <div class="node">Video CFTV</div>
+          <div class="node">Vídeo CFTV</div>
           <div class="arrow">↓</div>
           <div class="node">Manifesto assinado</div>
           <div class="arrow">↓</div>
@@ -248,11 +248,11 @@
       <section class="slide content-slide">
         <div>
           <p class="kicker">Problema</p>
-          <h2>Armazenar video nao prova cadeia de custodia</h2>
+          <h2>Armazenar vídeo não prova cadeia de custódia</h2>
           <ul>
-            <li>CFTV pode ser usado como evidencia em auditorias e pericias.</li>
+            <li>CFTV pode ser usado como evidência em auditorias e perícias.</li>
             <li>Armazenamento centralizado depende de confiar no operador.</li>
-            <li>O video pode ser contestado por alteracao, remocao ou reordenacao.</li>
+            <li>O vídeo pode ser contestado por alteração, remoção ou reordenação.</li>
           </ul>
         </div>
       </section>
@@ -260,11 +260,11 @@
       <section class="slide split-slide">
         <div>
           <p class="kicker">Ideia central</p>
-          <h2>Bitcoin como timestamp, nao como banco de dados</h2>
-          <p>O video permanece off-chain. A blockchain recebe apenas uma prova temporal de um compromisso criptografico do pacote.</p>
+          <h2>Bitcoin como timestamp, não como banco de dados</h2>
+          <p>O vídeo permanece off-chain. A blockchain recebe apenas uma prova temporal de um compromisso criptográfico do pacote.</p>
         </div>
         <div class="panel diagram">
-          <div class="node">Video privado</div>
+          <div class="node">Vídeo privado</div>
           <div class="arrow">→</div>
           <div class="node">Hash do manifesto</div>
           <div class="arrow">→</div>
@@ -277,8 +277,8 @@
       <section class="slide split-slide">
         <div>
           <p class="kicker">Arquitetura</p>
-          <h2>Fluxo do pacote verificavel</h2>
-          <p>O pacote combina hashes, sequencia temporal, assinatura digital e prova <code>.ots</code>.</p>
+          <h2>Fluxo do pacote verificável</h2>
+          <p>O pacote combina hashes, sequência temporal, assinatura digital e prova <code>.ots</code>.</p>
         </div>
         <div class="panel diagram">
           <div class="node">Segmentador</div>
@@ -292,25 +292,25 @@
       <section class="slide content-slide">
         <div>
           <p class="kicker">OpenTimestamps</p>
-          <h2>Prova de existencia temporal</h2>
+          <h2>Prova de existência temporal</h2>
           <ul>
             <li>Gera prova <code>.ots</code> para o manifesto.</li>
-            <li>Agrega compromissos criptograficos.</li>
+            <li>Agrega compromissos criptográficos.</li>
             <li>Ancora a prova em bloco Bitcoin.</li>
-            <li>Permite verificacao posterior por terceiro independente.</li>
+            <li>Permite verificação posterior por terceiro independente.</li>
           </ul>
         </div>
       </section>
 
       <section class="slide content-slide">
         <div>
-          <p class="kicker">Implementacao</p>
+          <p class="kicker">Implementação</p>
           <h2>Protótipo em Python</h2>
           <ul>
-            <li><code>segment_video.py</code>: divide o video em segmentos.</li>
+            <li><code>segment_video.py</code>: divide o vídeo em segmentos.</li>
             <li><code>create_package.py</code>: gera manifesto e assinatura.</li>
             <li><code>stamp_manifest.py</code>: cria prova OpenTimestamps.</li>
-            <li><code>verify_package.py</code>: verifica integridade e adulteracoes.</li>
+            <li><code>verify_package.py</code>: verifica integridade e adulterações.</li>
           </ul>
         </div>
       </section>
@@ -318,8 +318,8 @@
       <section class="slide split-slide">
         <div>
           <p class="kicker">Mini calendar local</p>
-          <h2>Merkle tree didatica</h2>
-          <p>O mini calendar demonstra agregacao por Merkle tree e prova JSON de inclusao. Ele complementa, mas nao substitui, o OpenTimestamps.</p>
+          <h2>Merkle tree didática</h2>
+          <p>O mini calendar demonstra agregação por Merkle tree e prova JSON de inclusão. Ele complementa, mas não substitui, o OpenTimestamps.</p>
         </div>
         <div class="panel diagram">
           <div class="node">Hashes do pacote</div>
@@ -335,34 +335,34 @@
       <section class="slide content-slide">
         <div>
           <p class="kicker">Experimentos</p>
-          <h2>Pacote integro passa, adulteracoes falham</h2>
+          <h2>Pacote íntegro passa, adulterações falham</h2>
           <div class="result-grid">
             <div class="result"><strong>INTEGRO</strong><span>Pacote original validado.</span></div>
-            <div class="result fail"><strong>INVALIDO</strong><span>Segmento com bytes alterados.</span></div>
-            <div class="result fail"><strong>INVALIDO</strong><span>Segmento removido.</span></div>
-            <div class="result fail"><strong>INVALIDO</strong><span>Manifesto alterado ou reordenado.</span></div>
+            <div class="result fail"><strong>INVÁLIDO</strong><span>Segmento com bytes alterados.</span></div>
+            <div class="result fail"><strong>INVÁLIDO</strong><span>Segmento removido.</span></div>
+            <div class="result fail"><strong>INVÁLIDO</strong><span>Manifesto alterado ou reordenado.</span></div>
           </div>
         </div>
       </section>
 
       <section class="slide content-slide">
         <div>
-          <p class="kicker">Limitacoes</p>
-          <h2>O que a prova nao resolve</h2>
+          <p class="kicker">Limitações</p>
+          <h2>O que a prova não resolve</h2>
           <ul>
-            <li>Nao prova que a camera estava fisicamente protegida.</li>
-            <li>Nao prova a verdade semantica do conteudo filmado.</li>
-            <li>Depende de boa gestao da chave privada do dispositivo.</li>
-            <li>A confirmacao final em Bitcoin pode demorar.</li>
+            <li>Não prova que a câmera estava fisicamente protegida.</li>
+            <li>Não prova a verdade semântica do conteúdo filmado.</li>
+            <li>Depende de boa gestão da chave privada do dispositivo.</li>
+            <li>A confirmação final em Bitcoin pode demorar.</li>
           </ul>
         </div>
       </section>
 
       <section class="slide content-slide">
         <div>
-          <p class="kicker">Conclusao</p>
-          <h2>Bitcoin como camada publica de confianca minima</h2>
-          <p>O projeto demonstra uma cadeia de custodia leve para videos CFTV, com integridade, assinatura, anterioridade temporal e verificacao independente sem armazenar video na blockchain.</p>
+          <p class="kicker">Conclusão</p>
+          <h2>Bitcoin como camada pública de confiança mínima</h2>
+          <p>O projeto demonstra uma cadeia de custódia leve para vídeos CFTV, com integridade, assinatura, anterioridade temporal e verificação independente sem armazenar vídeo na blockchain.</p>
           <p><code>cftv.vilarins.cloud</code></p>
         </div>
       </section>
