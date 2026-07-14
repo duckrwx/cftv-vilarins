@@ -143,23 +143,48 @@
 
         <section id="fundamentos" class="section">
           <p class="section-kicker">Fundamentos</p>
-          <h2>Primitivas usadas</h2>
+          <h2>Conceitos da disciplina aplicados ao projeto</h2>
+          <p>
+            A proposta combina primitivas estudadas em Bitcoin para resolver um problema de
+            cadeia de custódia: transformar um vídeo privado em evidência verificável sem colocar
+            o conteúdo do vídeo na blockchain.
+          </p>
           <dl class="term-list">
             <div>
-              <dt>SHA-256</dt>
-              <dd>Gera identificadores criptográficos dos segmentos e do manifesto.</dd>
+              <dt>Hash SHA-256</dt>
+              <dd>
+                Cada segmento e o manifesto recebem um digest determinístico. Qualquer alteração
+                de bytes muda o hash esperado e torna a adulteração detectável.
+              </dd>
+            </div>
+            <div>
+              <dt>Merkle tree</dt>
+              <dd>
+                A agregação por árvore de Merkle permite representar muitos compromissos por uma
+                raiz verificável, reduzindo custo e evitando publicar cada segmento separadamente.
+              </dd>
             </div>
             <div>
               <dt>Assinatura digital</dt>
-              <dd>Vincula o manifesto a uma chave do dispositivo de borda simulado.</dd>
+              <dd>
+                A assinatura vincula o manifesto a uma chave do dispositivo ou custodiante. Sem
+                ela, o timestamp prova existência; com ela, há também autoria criptográfica.
+              </dd>
+            </div>
+            <div>
+              <dt>UTXO e OP_RETURN</dt>
+              <dd>
+                Em Bitcoin, transações consomem UTXOs e criam novas saídas. Uma saída
+                <code>OP_RETURN</code> é um caso no-one-can-spend: registra dados arbitrários de
+                forma comprovadamente não gastável.
+              </dd>
             </div>
             <div>
               <dt>OpenTimestamps</dt>
-              <dd>Agrega provas e ancora compromissos criptográficos em Bitcoin.</dd>
-            </div>
-            <div>
-              <dt>Bitcoin</dt>
-              <dd>Fornece uma linha do tempo pública para anterioridade temporal.</dd>
+              <dd>
+                O protocolo agrega compromissos criptográficos e ancora uma raiz em Bitcoin,
+                produzindo uma prova verificável de anterioridade temporal.
+              </dd>
             </div>
           </dl>
         </section>
@@ -187,14 +212,44 @@
           </p>
         </section>
 
+        <section id="vinculo-bitcoin" class="section">
+          <p class="section-kicker">Prova Bitcoin</p>
+          <h2>Como o manifesto é vinculado a uma transação confirmada</h2>
+          <p>
+            O hash do manifesto não precisa aparecer diretamente como uma transação exclusiva. No
+            OpenTimestamps, esse hash entra em uma prova composta por operações criptográficas
+            como concatenação e SHA-256, até chegar a um compromisso agregado ancorado em Bitcoin.
+          </p>
+          <div class="code-layout">
+            <div>
+              <h3>Caminho lógico da prova</h3>
+              <pre><code>manifesto assinado
+  -> SHA-256 do manifesto
+  -> prova .ots
+  -> operações append/prepend + SHA-256
+  -> compromisso agregado
+  -> transação Bitcoin
+  -> bloco confirmado</code></pre>
+            </div>
+            <div>
+              <h3>Verificação independente</h3>
+              <p>
+                O verificador recalcula o hash do manifesto, valida a assinatura e usa a prova
+                <code>.ots</code> para reconstruir o caminho até a atestação Bitcoin. A evidência
+                não depende de confiar no servidor que armazenou o vídeo.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section id="implementacao" class="section">
           <p class="section-kicker">Implementação</p>
           <h2>MVP em Python com empacotamento, assinatura e verificação</h2>
           <p>
             O MVP usa um arquivo local como entrada e simula o dispositivo de borda no próprio
-            ambiente de execução. A decisão técnica foi remover Ethereum, Solidity, Hardhat e
-            Lightning do núcleo da solução, mantendo OpenTimestamps como mecanismo principal de
-            timestamp público em Bitcoin.
+            ambiente de execução. O foco da implementação é reproduzir o fluxo essencial de
+            custódia: segmentar o vídeo, calcular hashes, gerar um manifesto assinado, produzir a
+            prova OpenTimestamps e permitir verificação posterior por terceiro independente.
           </p>
           <div class="code-layout">
             <div>
