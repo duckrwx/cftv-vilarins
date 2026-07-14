@@ -3,22 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadeia de custodia verificavel para videos CFTV</title>
+    <title>Cadeia de custódia verificável para vídeos CFTV</title>
     <meta
       name="description"
-      content="Artigo web do projeto de cadeia de custodia verificavel para videos CFTV usando OpenTimestamps e Bitcoin."
+      content="Artigo web do projeto de cadeia de custódia verificável para vídeos CFTV usando OpenTimestamps e Bitcoin."
     >
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header">
-      <nav class="topbar" aria-label="Navegacao principal">
+      <nav class="topbar" aria-label="Navegação principal">
         <a class="brand" href="#topo">CFTV + Bitcoin</a>
         <div class="nav-links">
           <a href="#problema">Problema</a>
           <a href="#arquitetura">Arquitetura</a>
           <a href="#experimentos">Experimentos</a>
-          <a href="#conclusao">Conclusao</a>
+          <a href="provas.html">Provas</a>
+          <a href="#conclusao">Conclusão</a>
         </div>
       </nav>
     </header>
@@ -26,18 +27,19 @@
     <main id="topo">
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">UnB 2026.1 · Topicos em Engenharia</p>
-          <h1>Cadeia de custodia verificavel para videos CFTV usando OpenTimestamps e Bitcoin</h1>
+          <p class="eyebrow">UnB 2026.1 · Tópicos em Engenharia</p>
+          <h1>Cadeia de custódia verificável para vídeos CFTV usando OpenTimestamps e Bitcoin</h1>
           <p class="lead">
-            Este projeto demonstra como preservar a integridade de videos de monitoramento sem
-            armazenar o video, nem seus metadados sensiveis, diretamente em uma blockchain.
+            Este projeto demonstra como preservar a integridade de vídeos de monitoramento sem
+            armazenar o vídeo, nem seus metadados sensíveis, diretamente em uma blockchain.
           </p>
           <div class="hero-actions" aria-label="Atalhos">
             <a class="button primary" href="#arquitetura">Ver arquitetura</a>
             <a class="button secondary" href="#experimentos">Resultados do MVP</a>
+            <a class="button secondary" href="provas.html">Ver provas</a>
           </div>
         </div>
-        <aside class="hero-panel" aria-label="Resumo do fluxo tecnico">
+        <aside class="hero-panel" aria-label="Resumo do fluxo técnico">
           <div class="signal-grid">
             <span></span><span></span><span></span><span></span>
             <span></span><span></span><span></span><span></span>
@@ -48,10 +50,10 @@
               <span></span>
             </div>
             <ol class="mini-flow">
-              <li>Video CFTV</li>
+              <li>Vídeo CFTV</li>
               <li>Hash + assinatura</li>
               <li>Prova OpenTimestamps</li>
-              <li>Verificacao independente</li>
+              <li>Verificação independente</li>
             </ol>
           </div>
         </aside>
@@ -60,55 +62,55 @@
       <section class="section summary-band" aria-label="Resumo">
         <div class="summary-item">
           <strong>Ideia central</strong>
-          <span>Bitcoin e usado como camada publica de anterioridade temporal.</span>
+          <span>Bitcoin é usado como camada pública de anterioridade temporal.</span>
         </div>
         <div class="summary-item">
           <strong>Escopo</strong>
-          <span>O video permanece off-chain; somente o compromisso criptografico e carimbado.</span>
+          <span>O vídeo permanece off-chain; somente o compromisso criptográfico é carimbado.</span>
         </div>
         <div class="summary-item">
           <strong>Status</strong>
-          <span>MVP local com verificacao integra e quatro casos adulterados detectados.</span>
+          <span>MVP local com verificação íntegra e quatro casos adulterados detectados.</span>
         </div>
       </section>
 
       <article class="article">
         <section id="resumo" class="section">
           <p class="section-kicker">Resumo</p>
-          <h2>Prova publica de existencia temporal para evidencias privadas</h2>
+          <h2>Prova pública de existência temporal para evidências privadas</h2>
           <p>
-            Sistemas de CFTV sao usados como fonte de evidencia em auditorias, disputas,
-            investigacoes e processos de conformidade. O problema e que um arquivo de video
+            Sistemas de CFTV são usados como fonte de evidência em auditorias, disputas,
+            investigações e processos de conformidade. O problema é que um arquivo de vídeo
             armazenado em ambiente centralizado pode ser contestado: ele pode ter sido alterado,
-            ter trechos removidos, ter segmentos reordenados ou ter sido substituido depois da
+            ter trechos removidos, ter segmentos reordenados ou ter sido substituído depois da
             captura.
           </p>
           <p>
-            A solucao proposta segmenta o video, calcula hashes SHA-256, gera um manifesto,
+            A solução proposta segmenta o vídeo, calcula hashes SHA-256, gera um manifesto,
             assina esse manifesto com a chave do dispositivo de borda e usa OpenTimestamps para
-            produzir uma prova de existencia temporal ancorada em Bitcoin. Assim, um verificador
-            independente pode comparar o pacote apresentado com os compromissos criptograficos
+            produzir uma prova de existência temporal ancorada em Bitcoin. Assim, um verificador
+            independente pode comparar o pacote apresentado com os compromissos criptográficos
             registrados anteriormente.
           </p>
         </section>
 
         <section id="problema" class="section">
           <p class="section-kicker">Problema</p>
-          <h2>Armazenar o video nao basta para provar cadeia de custodia</h2>
+          <h2>Armazenar o vídeo não basta para provar cadeia de custódia</h2>
           <div class="two-column">
             <div>
               <p>
-                Em um sistema tradicional, a confianca fica concentrada no operador do DVR, NVR,
-                servidor ou banco de videos. Mesmo que o arquivo exista, ainda falta uma prova
-                externa de que aquele conteudo ja existia naquele estado em um instante anterior.
+                Em um sistema tradicional, a confiança fica concentrada no operador do DVR, NVR,
+                servidor ou banco de vídeos. Mesmo que o arquivo exista, ainda falta uma prova
+                externa de que aquele conteúdo já existia naquele estado em um instante anterior.
               </p>
               <p>
-                Com ferramentas modernas de edicao e geracao por inteligencia artificial, a
-                contestacao fica mais plausivel. Por isso, o projeto separa tres perguntas:
+                Com ferramentas modernas de edição e geração por inteligência artificial, a
+                contestação fica mais plausível. Por isso, o projeto separa três perguntas:
               </p>
             </div>
             <ul class="check-list">
-              <li>O pacote apresentado esta integro?</li>
+              <li>O pacote apresentado está íntegro?</li>
               <li>O manifesto foi produzido por uma chave autorizada?</li>
               <li>Esse manifesto existia antes de uma determinada data?</li>
             </ul>
@@ -116,17 +118,17 @@
         </section>
 
         <section id="relevancia" class="section">
-          <p class="section-kicker">Relevancia</p>
-          <h2>Bitcoin como infraestrutura de verificacao, nao como banco de dados</h2>
+          <p class="section-kicker">Relevância</p>
+          <h2>Bitcoin como infraestrutura de verificação, não como banco de dados</h2>
           <p>
-            O projeto nao tenta gravar videos em Bitcoin. Isso seria caro, lento e inadequado.
-            A contribuicao esta em usar Bitcoin apenas como uma camada publica, resistente a
-            adulteracao retroativa, para provar anterioridade temporal de um manifesto assinado.
+            O projeto não tenta gravar vídeos em Bitcoin. Isso seria caro, lento e inadequado.
+            A contribuição está em usar Bitcoin apenas como uma camada pública, resistente a
+            adulteração retroativa, para provar anterioridade temporal de um manifesto assinado.
           </p>
           <div class="value-grid">
             <div class="value-item">
               <h3>Privacidade</h3>
-              <p>O video e os metadados operacionais permanecem fora da blockchain.</p>
+              <p>O vídeo e os metadados operacionais permanecem fora da blockchain.</p>
             </div>
             <div class="value-item">
               <h3>Auditabilidade</h3>
@@ -134,7 +136,7 @@
             </div>
             <div class="value-item">
               <h3>Baixo acoplamento</h3>
-              <p>A solucao pode complementar CFTV existente, storages, DVRs e NVRs.</p>
+              <p>A solução pode complementar CFTV existente, storages, DVRs e NVRs.</p>
             </div>
           </div>
         </section>
@@ -145,7 +147,7 @@
           <dl class="term-list">
             <div>
               <dt>SHA-256</dt>
-              <dd>Gera identificadores criptograficos dos segmentos e do manifesto.</dd>
+              <dd>Gera identificadores criptográficos dos segmentos e do manifesto.</dd>
             </div>
             <div>
               <dt>Assinatura digital</dt>
@@ -153,22 +155,22 @@
             </div>
             <div>
               <dt>OpenTimestamps</dt>
-              <dd>Agrega provas e ancora compromissos criptograficos em Bitcoin.</dd>
+              <dd>Agrega provas e ancora compromissos criptográficos em Bitcoin.</dd>
             </div>
             <div>
               <dt>Bitcoin</dt>
-              <dd>Fornece uma linha do tempo publica para anterioridade temporal.</dd>
+              <dd>Fornece uma linha do tempo pública para anterioridade temporal.</dd>
             </div>
           </dl>
         </section>
 
         <section id="arquitetura" class="section">
           <p class="section-kicker">Arquitetura</p>
-          <h2>Fluxo do pacote verificavel</h2>
-          <div class="architecture" role="img" aria-label="Fluxo de video para verificacao">
-            <div class="arch-node">Video<br>CFTV</div>
+          <h2>Fluxo do pacote verificável</h2>
+          <div class="architecture" role="img" aria-label="Fluxo de vídeo para verificação">
+            <div class="arch-node">Vídeo<br>CFTV</div>
             <div class="arch-arrow"></div>
-            <div class="arch-node">Segmentacao<br>temporal</div>
+            <div class="arch-node">Segmentação<br>temporal</div>
             <div class="arch-arrow"></div>
             <div class="arch-node">Hashes<br>SHA-256</div>
             <div class="arch-arrow"></div>
@@ -180,19 +182,19 @@
           </div>
           <p>
             O manifesto funciona como o centro do pacote. Ele referencia os segmentos, declara a
-            camera/dispositivo, guarda os hashes e recebe a assinatura. A prova <code>.ots</code>
-            e preservada junto ao pacote para verificacao posterior.
+            câmera/dispositivo, guarda os hashes e recebe a assinatura. A prova <code>.ots</code>
+            é preservada junto ao pacote para verificação posterior.
           </p>
         </section>
 
         <section id="implementacao" class="section">
-          <p class="section-kicker">Implementacao</p>
-          <h2>MVP em Python com empacotamento, assinatura e verificacao</h2>
+          <p class="section-kicker">Implementação</p>
+          <h2>MVP em Python com empacotamento, assinatura e verificação</h2>
           <p>
-            O MVP usa um arquivo local como entrada e simula o dispositivo de borda no proprio
-            ambiente de execucao. A decisao tecnica foi remover Ethereum, Solidity, Hardhat e
-            Lightning do nucleo da solucao, mantendo OpenTimestamps como mecanismo principal de
-            timestamp publico em Bitcoin.
+            O MVP usa um arquivo local como entrada e simula o dispositivo de borda no próprio
+            ambiente de execução. A decisão técnica foi remover Ethereum, Solidity, Hardhat e
+            Lightning do núcleo da solução, mantendo OpenTimestamps como mecanismo principal de
+            timestamp público em Bitcoin.
           </p>
           <div class="code-layout">
             <div>
@@ -206,7 +208,7 @@
               </ul>
             </div>
             <div>
-              <h3>Execucao local</h3>
+              <h3>Execução local</h3>
               <pre><code>python3 src/segmenter/segment_video.py
 python3 src/packager/create_package.py
 python3 src/gateway/validate_package.py
@@ -218,74 +220,74 @@ python3 src/verifier/verify_package.py</code></pre>
 
         <section id="experimentos" class="section">
           <p class="section-kicker">Experimentos</p>
-          <h2>Resultado esperado: pacote integro passa, adulteracoes falham</h2>
+          <h2>Resultado esperado: pacote íntegro passa, adulterações falham</h2>
           <div class="result-grid">
             <div class="result-card success">
-              <span class="status">INTEGRO</span>
+              <span class="status">ÍNTEGRO</span>
               <h3>Pacote original</h3>
               <p>
                 O pacote <code>camera-001-20260615T210000Z</code> foi validado com checksums,
-                sequencia temporal, assinatura e prova OpenTimestamps presentes.
+                sequência temporal, assinatura e prova OpenTimestamps presentes.
               </p>
             </div>
             <div class="result-card fail">
-              <span class="status">INVALIDO</span>
+              <span class="status">INVÁLIDO</span>
               <h3>Segmento alterado</h3>
-              <p>O verificador detectou divergencia de checksum e hash no segmento adulterado.</p>
+              <p>O verificador detectou divergência de checksum e hash no segmento adulterado.</p>
             </div>
             <div class="result-card fail">
-              <span class="status">INVALIDO</span>
+              <span class="status">INVÁLIDO</span>
               <h3>Segmento removido</h3>
               <p>O verificador detectou arquivo ausente, lacuna temporal e quebra de encadeamento.</p>
             </div>
             <div class="result-card fail">
-              <span class="status">INVALIDO</span>
+              <span class="status">INVÁLIDO</span>
               <h3>Manifesto alterado</h3>
-              <p>A modificacao invalidou checksum e assinatura digital.</p>
+              <p>A modificação invalidou checksum e assinatura digital.</p>
             </div>
             <div class="result-card fail">
-              <span class="status">INVALIDO</span>
+              <span class="status">INVÁLIDO</span>
               <h3>Segmentos reordenados</h3>
-              <p>O verificador detectou sequencia inesperada, lacunas e assinatura invalida.</p>
+              <p>O verificador detectou sequência inesperada, lacunas e assinatura inválida.</p>
             </div>
           </div>
         </section>
 
         <section id="discussao" class="section">
-          <p class="section-kicker">Discussao</p>
-          <h2>O que a prova resolve e o que ela nao resolve</h2>
+          <p class="section-kicker">Discussão</p>
+          <h2>O que a prova resolve e o que ela não resolve</h2>
           <p>
-            O timestamp prova que um determinado compromisso criptografico existia antes de certo
+            O timestamp prova que um determinado compromisso criptográfico existia antes de certo
             momento. A assinatura digital ajuda a atribuir o manifesto a uma chave. Os hashes
-            detectam alteracoes no conteudo. Em conjunto, esses mecanismos fortalecem a cadeia de
-            custodia.
+            detectam alterações no conteúdo. Em conjunto, esses mecanismos fortalecem a cadeia de
+            custódia.
           </p>
           <p>
-            Ainda assim, o modelo nao prova sozinho que a camera estava apontada para o local
-            correto, que o relogio local estava certo ou que a chave privada nunca foi
-            comprometida. Esses pontos dependem de governanca operacional, protecao da chave e
-            controles fisicos do dispositivo.
+            Ainda assim, o modelo não prova sozinho que a câmera estava apontada para o local
+            correto, que o relógio local estava certo ou que a chave privada nunca foi
+            comprometida. Esses pontos dependem de governança operacional, proteção da chave e
+            controles físicos do dispositivo.
           </p>
         </section>
 
         <section id="conclusao" class="section">
-          <p class="section-kicker">Conclusao</p>
-          <h2>Uma camada de confianca minima para evidencias de video</h2>
+          <p class="section-kicker">Conclusão</p>
+          <h2>Uma camada de confiança mínima para evidências de vídeo</h2>
           <p>
-            A proposta mostra que e possivel construir uma cadeia de custodia leve para videos CFTV
-            usando ferramentas abertas e verificaveis. O video permanece privado e off-chain; o
-            Bitcoin entra apenas como infraestrutura publica de timestamp para o manifesto
+            A proposta mostra que é possível construir uma cadeia de custódia leve para vídeos CFTV
+            usando ferramentas abertas e verificáveis. O vídeo permanece privado e off-chain; o
+            Bitcoin entra apenas como infraestrutura pública de timestamp para o manifesto
             assinado.
           </p>
           <p>
-            Para a disciplina, o resultado principal e demonstrar uma arquitetura coerente e um MVP
-            que identifica adulteracoes praticas: alteracao de bytes, remocao de segmentos,
-            modificacao do manifesto e reordenacao temporal.
+            Para a disciplina, o resultado principal é demonstrar uma arquitetura coerente e um MVP
+            que identifica adulterações práticas: alteração de bytes, remoção de segmentos,
+            modificação do manifesto e reordenação temporal.
           </p>
         </section>
 
         <section id="referencias" class="section references">
-          <p class="section-kicker">Referencias</p>
+          <p class="section-kicker">Referências</p>
           <h2>Materiais base</h2>
           <ul>
             <li>
@@ -298,7 +300,7 @@ python3 src/verifier/verify_package.py</code></pre>
               RFC 6962: <a href="https://www.rfc-editor.org/rfc/rfc6962">Certificate Transparency</a>.
             </li>
             <li>
-              Documentacao e codigo do MVP em <code>cftv-btc</code>.
+              Documentação e código do MVP em <code>cftv-btc</code>.
             </li>
           </ul>
         </section>
@@ -306,7 +308,7 @@ python3 src/verifier/verify_package.py</code></pre>
     </main>
 
     <footer class="footer">
-      <p>Projeto final · Topicos em Engenharia · UnB 2026.1</p>
+      <p>Projeto final · Tópicos em Engenharia · UnB 2026.1</p>
     </footer>
   </body>
 </html>
