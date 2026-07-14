@@ -61,6 +61,21 @@ Principais componentes:
 - `implementation/src/verifier/`: verificacao independente.
 - `implementation/docs/mvp/`: documentacao de execucao e estrutura.
 
+## OpenTimestamps
+
+A integracao com OpenTimestamps esta implementada em:
+
+- `implementation/src/anchor/stamp_manifest.py`: gera a prova `.ots` do manifesto assinado.
+- `implementation/src/verifier/verify_package.py`: verifica o pacote e a prova OpenTimestamps.
+- `implementation/docs/mvp/execucao-local.md`: documenta o fluxo de stamp, upgrade e verificacao.
+- `implementation/requirements.txt`: inclui `opentimestamps-client`.
+
+As provas visuais da confirmacao em Bitcoin estao em:
+
+```text
+https://cftv.vilarins.cloud/provas.html
+```
+
 Para executar localmente:
 
 ```text
