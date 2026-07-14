@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Environment
+.env
+.env.*
+
+# Private keys and signatures
+keys/*
+!keys/.gitkeep
+*.pem
+*.key
+*.sig
+
+# Generated video, packages, proofs and reports
+data/input/*
+!data/input/.gitkeep
+data/segments/*
+!data/segments/.gitkeep
+data/packages/*
+!data/packages/.gitkeep
+data/tampered/*
+!data/tampered/.gitkeep
+data/ots/*
+!data/ots/.gitkeep
+reports/*
+!reports/.gitkeep
+
+# Local/editor files
+.DS_Store
+*.log
+
